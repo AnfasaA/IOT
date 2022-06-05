@@ -4,11 +4,16 @@ import picamera
 import numpy as np
 import cv2
 import RPi.GPIO as GPIO
+import thingspeak
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(7, GPIO.IN)
 
+channel_id=1759085
+write_key='TGCYXBI98PUEAXHS'
+
+channel = thingspeak.Channel(id=channel_id, api_key=write_key)
 while True:
     i=GPIO.input(7)
     if i==1:                 #When output from motion sensor is LOW
@@ -28,3 +33,4 @@ while True:
     elif i==0:               #When output from motion sensor is HIGH
         print ("no intruder",i)
         time.sleep(5)
+    response = channel.update({'field1' : i})
