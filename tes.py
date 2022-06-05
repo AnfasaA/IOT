@@ -1,3 +1,4 @@
+from datetime import datetime
 import time
 import picamera
 import numpy as np
@@ -10,4 +11,7 @@ with picamera.PiCamera() as camera:
     image = np.empty((240 * 320 * 3,), dtype=np.uint8)
     camera.capture(image, 'bgr')
     image = image.reshape((240, 320, 3))
-    cv2.imwrite('uhuy.jpg', image)
+    now = datetime.now()
+    currenttime = now.strftime("%d%m%Y_%H:%M:%S")
+    filename = '%s.jpg' % (currenttime)
+    cv2.imwrite(filename, image)
