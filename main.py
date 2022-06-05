@@ -11,7 +11,7 @@ stream = io.BytesIO()
 #Here you can also specify other parameters (e.g.:rotate the image)
 with picamera.PiCamera() as camera:
     time.sleep(2)
-    camera.resolution = (320, 240)
+    camera.resolution = (640, 480)
     camera.capture(stream, format='jpeg')
 
 #Convert the picture into a numpy array
