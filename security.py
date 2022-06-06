@@ -26,7 +26,7 @@ while True:
             camera.capture(image, 'bgr')
             image = image.reshape((240, 320, 3))
             now = datetime.now()
-            currenttime = now.strftime("%d%m%Y_%H:%M:%S")
+            currenttime = now.strftime("Photo_%d%m%Y_%H:%M:%S")
             filename = '%s.jpg' % (currenttime)
             cv2.imwrite(filename, image)
         time.sleep(5)
